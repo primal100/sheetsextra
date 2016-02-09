@@ -236,8 +236,8 @@ function autoResizeAll(sheet){
 * @param {Sheet} sheet the sheet object
 */
 function boldHeaders(sheet){
-  getColumn(sheet, 0, 1).getRange().setFontWeight("bold");
-  getRow(sheet, 0, 1).getRange().setFontWeight("bold");
+  sheet.getRange(1, 1, 1, sheet.getLastColumn()).setFontWeight("bold");
+  sheet.getRange(1, 1, sheet.getLastRow(), 1).setFontWeight("bold");
 }
 
 /**
@@ -276,4 +276,4 @@ function sendLogFile(mailto, description){
   catch(e){
     Logger.log(e); 
   }
-  }
+}
