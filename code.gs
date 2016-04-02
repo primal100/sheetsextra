@@ -241,9 +241,11 @@ function boldHeaders(sheet){
 }
 
 /**
-* Freeze column A and Row 1
+* Freeze headers (1 row and 1 column by default)
 *
 * @param {Sheet} sheet the sheet object
+* @param {Integer} rows the number of rows to freeze. Optional. Set to 1 if not given.
+* @param {Integer} columns the number of columns to freeze. Optional. Set to 1 if not given
 */ 
 function freezeHeaders(sheet, rows, columns){
   var rows = rows || 1;
@@ -252,6 +254,12 @@ function freezeHeaders(sheet, rows, columns){
   sheet.setFrozenColumns(columns);
 }
 
+/**
+* Converts a 2d list of values to a single array
+*
+* @param {Array} values2d 2d list of values
+* @return {Array} values1d 1d list of values
+*/ 
 function to1d(values2d){
     var values1d = [];
     for(var i = 0; i < values2d.length; i++){
@@ -260,6 +268,12 @@ function to1d(values2d){
     return values1d;
 }
 
+/**
+* Sends script logfile to an e-mail address
+*
+* @param {String} mailto E-mail address to send logfile to
+* @param {String} description Description included in e-mail subject
+*/ 
 function sendLogFile(mailto, description){
   date = new Date(),
     formattedDate = [date.getMonth()+1,
