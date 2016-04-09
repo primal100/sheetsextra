@@ -2,29 +2,29 @@
 * Attempts to return a sheet belonging to a spreadsheet by name. If it doesn't exist the sheet will be created and returned.
 *
 * @param {Spreadsheet} spreadsheet the spreadsheet object
-* @param {String} sheetName the name of the sheet to get or create
+* @param {string} sheetName the name of the sheet to get or create
 * @return {Sheet} the sheet object
 */
-function getOrCreateSheet(spreadsheet, sheetName){
-  if (spreadsheet.getSheetByName(sheetName) == null) {
-    spreadsheet.insertSheet(sheetName);
+function getOrCreatesheet(spreadsheet, sheetName){
+  if (spreadsheet.getsheetByName(sheetName) == null) {
+    spreadsheet.insertsheet(sheetName);
   }     
-  return spreadsheet.getSheetByName(sheetName);
+  return spreadsheet.getsheetByName(sheetName);
 }
 
 /**
-* Rename any sheet, not just the active one as Google Sheets normally only allows
+* Rename any sheet, not just the active one as Google sheets normally only allows
 *
 * @param {Spreadsheet} spreadsheet the spreadsheet object
 * @param {Sheet} sheet the sheet object to rename
-* @param {String} sheet the new name for the sheet
+* @param {string} newName the new name for the sheet
 */
-function renameSheet(spreadsheet, sheet, newName){
-  var activeSheet = spreadsheet.getActiveSheet();
-  spreadsheet.setActiveSheet(sheet);
-  spreadsheet.renameActiveSheet(newName);
-  if (activeSheet){
-    spreadsheet.setActiveSheet(activeSheet);
+function renamesheet(spreadsheet, sheet, newName){
+  var activesheet = spreadsheet.getActivesheet();
+  spreadsheet.setActivesheet(sheet);
+  spreadsheet.renameActivesheet(newName);
+  if (activesheet){
+    spreadsheet.setActivesheet(activesheet);
   }
 }
 
@@ -33,14 +33,14 @@ function renameSheet(spreadsheet, sheet, newName){
 * Attempts to rename a sheet by it's current name if it exists.
 *
 * @param {Spreadsheet} spreadsheet the spreadsheet object
-* @param {String} sheetName the name of the sheet to rename
-* @param {String} newName the new name for the sheet
-* @return {Boolean} true if the sheet was found and renamed, false otherwise
+* @param {string} sheetName the name of the sheet to rename
+* @param {string} newName the new name for the sheet
+* @return {boolean} true if the sheet was found and renamed, false otherwise
 */
-function renameSheetIfExists(spreadsheet, sheetName, newName){
-  var sheet = spreadsheet.getSheetByName(sheetName); 
+function renamesheetIfExists(spreadsheet, sheetName, newName){
+  var sheet = spreadsheet.getsheetByName(sheetName); 
   if (sheet){
-    renameSheet(spreadsheet, sheet, newName);
+    renamesheet(spreadsheet, sheet, newName);
     return true;
   }
   else{
@@ -49,18 +49,18 @@ function renameSheetIfExists(spreadsheet, sheetName, newName){
 }
 
 /**
-* Move any sheet to a new position, not just the active one as Google Sheets normally only allows
+* Move any sheet to a new position, not just the active one as Google sheets normally only allows
 *
 * @param {Spreadsheet} spreadsheet the spreadsheet object
 * @param {Sheet} sheet the sheet object to move
-* @param {Integer} newpos the position to move the sheet to
+* @param {number} newpos the position to move the sheet to
 */
-function moveSheet(spreadsheet, sheet, newpos){
-  var activeSheet = spreadsheet.getActiveSheet();
-  spreadsheet.setActiveSheet(sheet);
-  spreadsheet.moveActiveSheet(newpos);
-  if (activeSheet){
-    spreadsheet.setActiveSheet(activeSheet);
+function movesheet(spreadsheet, sheet, newpos){
+  var activesheet = spreadsheet.getActivesheet();
+  spreadsheet.setActivesheet(sheet);
+  spreadsheet.moveActivesheet(newpos);
+  if (activesheet){
+    spreadsheet.setActivesheet(activesheet);
   }
 }
 
@@ -69,13 +69,13 @@ function moveSheet(spreadsheet, sheet, newpos){
 *
 * @param {Spreadsheet} spreadsheet the spreadsheet object
 * @param {string} sheetName the name of the sheet to move
-* @param {Integer} newpos the position to move the sheet to
+* @param {number} newpos the position to move the sheet to
 * @return {boolean} true if the sheet was found and moved, false otherwise
 */
-function moveSheetIfExists(spreadsheet, sheetName, newpos){
-  var sheet = spreadsheet.getSheetByName(sheetName); 
+function movesheetIfExists(spreadsheet, sheetName, newpos){
+  var sheet = spreadsheet.getsheetByName(sheetName); 
   if (sheet){
-    moveSheet(spreadsheet, sheet, newpos)
+    movesheet(spreadsheet, sheet, newpos)
     return true;
   }
   else{
@@ -84,20 +84,20 @@ function moveSheetIfExists(spreadsheet, sheetName, newpos){
 }
 
 /**
-* Duplicate any sheet, not just the active one as Google Sheets normally only allows
+* Duplicate any sheet, not just the active one as Google sheets normally only allows
 *
 * @param {Spreadsheet} spreadsheet the spreadsheet object
 * @param {Sheet} sheet the sheet object to duplicate
 * @return {Sheet} the new sheet
 */
-function duplicateSheet(spreadsheet, sheet){
-  var activeSheet = spreadsheet.getActiveSheet();
-  spreadsheet.setActiveSheet(sheet);
-  var newSheet = spreadsheet.duplicateActiveSheet();
-  if (activeSheet){
-    spreadsheet.setActiveSheet(activeSheet);
+function duplicatesheet(spreadsheet, sheet){
+  var activesheet = spreadsheet.getActivesheet();
+  spreadsheet.setActivesheet(sheet);
+  var newsheet = spreadsheet.duplicateActivesheet();
+  if (activesheet){
+    spreadsheet.setActivesheet(activesheet);
   }
-  return newSheet;
+  return newsheet;
 }
 
 
@@ -108,10 +108,10 @@ function duplicateSheet(spreadsheet, sheet){
 * @param {string} sheetName the name of the sheet to duplicate
 * @return {boolean} true if the sheet was found and moved, false otherwise
 */
-function duplicateSheetIfExists(spreadsheet, sheetName){
-  var sheet = spreadsheet.getSheetByName(sheetName); 
+function duplicatesheetIfExists(spreadsheet, sheetName){
+  var sheet = spreadsheet.getsheetByName(sheetName); 
   if (sheet){
-    duplicateSheet(spreadsheet, sheet);
+    duplicatesheet(spreadsheet, sheet);
     return true;
   }
   else{
@@ -124,20 +124,20 @@ function duplicateSheetIfExists(spreadsheet, sheetName){
 *
 * @param {Spreadsheet} spreadsheet the spreadsheet object
 * @param {Sheet} sheet the sheet object to duplicate
-* @param {String} newName the new name of the sheet that will be renamed
-* @param {Boolean} renameOld if true, renames the originally duplicated sheet, if false renames the newly created sheet
+* @param {string} newName the new name of the sheet that will be renamed
+* @param {boolean} renameOld if true, renames the originally duplicated sheet, if false renames the newly created sheet
 * @return {Sheet} the new sheet
 */
-function duplicateRenameSheet(spreadsheet, sheet, newName, renameOld){
-  var newSheet = duplicateSheet(spreadsheet, sheet);
+function duplicateRenamesheet(spreadsheet, sheet, newName, renameOld){
+  var newsheet = duplicatesheet(spreadsheet, sheet);
   var renameNew = renameOld || false; 
   if (renameOld){
-    renameSheet(spreadsheet, sheet, newName);
+    renamesheet(spreadsheet, sheet, newName);
   }
   else{
-    renameSheet(spreadsheet, newSheet, newName);
+    renamesheet(spreadsheet, newsheet, newName);
   }
-  return newSheet;
+  return newsheet;
 }
 
 
@@ -145,17 +145,17 @@ function duplicateRenameSheet(spreadsheet, sheet, newName, renameOld){
 * Duplicate and renames a sheet by name if it exists.
 *
 * @param {Spreadsheet} spreadsheet the spreadsheet object
-* @param {String} sheetName the name of the sheet to duplicate
-* @param {String} newName the new name of the sheet that will be renamed
-* @param {Boolean} renameOld if true, the originally duplicated sheet; if false renames the newly created sheet. Default is false.
+* @param {string} sheetName the name of the sheet to duplicate
+* @param {string} newName the new name of the sheet that will be renamed
+* @param {boolean} renameOld if true, the originally duplicated sheet; if false renames the newly created sheet. Default is false.
 * @return {Sheet} the new sheet or false if the sheet was not found
 */
-function duplicateRenameSheetIfExists(spreadsheet, sheetName, newName, renameOld){
-  var sheet = spreadsheet.getSheetByName(sheetName); 
+function duplicateRenamesheetIfExists(spreadsheet, sheetName, newName, renameOld){
+  var sheet = spreadsheet.getsheetByName(sheetName); 
   if (sheet){
     var renameNew = renameOld || false;
-    var newSheet = duplicateRenameSheet(spreadsheet, sheetName, newName, renameOld);
-    return newSheet;
+    var newsheet = duplicateRenamesheet(spreadsheet, sheetName, newName, renameOld);
+    return newsheet;
   }
   else{
     return false;
@@ -169,10 +169,10 @@ function duplicateRenameSheetIfExists(spreadsheet, sheetName, newName, renameOld
 * @param {string} sheetName the name of the sheet to get or create
 * @return {boolean} true if the sheet was found and deleted, false otherwise
 */
-function deleteSheetIfExists(spreadsheet, sheetName){
-  var sheet = spreadsheet.getSheetByName(sheetName); 
+function deletesheetIfExists(spreadsheet, sheetName){
+  var sheet = spreadsheet.getsheetByName(sheetName); 
   if (sheet){
-    spreadsheet.deleteSheet(sheet);
+    spreadsheet.deletesheet(sheet);
     return true;
   }
   else{
@@ -184,7 +184,7 @@ function deleteSheetIfExists(spreadsheet, sheetName){
 * Returns a data range without the specified number of header rows
 *
 * @param {Sheet} sheet the sheet object
-* @param {Integer} rowHeader the number of header rows. If not set a value of 1 is used.
+* @param {number} rowHeaderSize the number of header rows. If not set a value of 1 is used.
 * @return {Range} the data range
 */
 function dataRangeWithoutHeader(sheet, rowHeaderSize){
@@ -203,8 +203,8 @@ function dataRangeWithoutHeader(sheet, rowHeaderSize){
 * Sorts the full data range without the specified number of header rows
 *
 * @param {Sheet} sheet the sheet object
-* @param {sortSpecObj} sortOptions the sort options as accepted by the Google Sheets sort.range method
-* @param {Integer} rowHeaderSize the number of header rows. If not set a value of 0 is used.
+* @param {sortSpecObj} sortOptions the sort options as accepted by the Google sheets sort.range method
+* @param {number} rowHeaderSize the number of header rows. If not set a value of 0 is used.
 * @return {Range} the newly sorted data range
 */
 function sortAll(sheet, sortOptions, rowHeaderSize){
@@ -244,8 +244,8 @@ function boldHeaders(sheet){
 * Freeze headers (1 row and 1 column by default)
 *
 * @param {Sheet} sheet the sheet object
-* @param {Integer} rows the number of rows to freeze. Optional. Set to 1 if not given.
-* @param {Integer} columns the number of columns to freeze. Optional. Set to 1 if not given
+* @param {number} rows the number of rows to freeze. Optional. Set to 1 if not given.
+* @param {number} columns the number of columns to freeze. Optional. Set to 1 if not given
 */ 
 function freezeHeaders(sheet, rows, columns){
   var rows = rows || 1;
@@ -271,8 +271,8 @@ function to1d(values2d){
 /**
 * Sends script logfile to an e-mail address
 *
-* @param {String} mailto E-mail address to send logfile to
-* @param {String} description Description included in e-mail subject
+* @param {string} mailto E-mail address to send logfile to
+* @param {string} description Description included in e-mail subject
 */ 
 function sendLogFile(mailto, description){
   date = new Date(),
