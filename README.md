@@ -21,3 +21,7 @@ function boldHeaders(sheet)
 function freezeHeaders(sheet, rows, columns)
 
 ```
+
+Sheetslibrary documentation here:
+
+https://docs.google.com/macros/library/d/MBMqhMPNTAcCr_ppXue1xbWEdFEUJsEaZ/12
